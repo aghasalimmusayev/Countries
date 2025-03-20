@@ -1,10 +1,10 @@
+nav{padding: 35px;}
 nav a{font-family: "Roboto", sans-serif;}
 .navlinks{justify-content: space-between;}
 .left_links, .right_links{display: none;}
-.left_links a, .right_links a{border-bottom: 2px solid #e7e6e6;}
-.left_links li, .right_links li{margin: 0 10px;}
 .sm_links{
-    display: none;
+    overflow: hidden;
+    transition: .3s;
     background-color: white;
     top: 100%;
     left: 0;
@@ -14,18 +14,20 @@ nav a{font-family: "Roboto", sans-serif;}
 }
 .sm_links li{
     width: 60%;
+    margin: auto;
     text-align: center;
 }
+.sm_links a{color: black;}
 .navlinks .fa-bars, .navlinks .fa-earth-americas{
     cursor: pointer;
     padding: 10px;    
 }
 .navlinks .fa-bars{display: initial;}
 .fa-earth-americas{
-    color: blueviolet;
-    border-bottom: 2px solid blueviolet;
+    color: #8B5CF6;
+    border-bottom: 2px solid #8B5CF6;
 }
-.header_content{gap: 30px; height: 80vh;}
+.header_content{gap: 30px; height: 60vh;}
 .header_content h1, .header_content h2{font: 700 1.8rem "Roboto", sans-serif;}
 .header_content h2{color: #8B5CF6;}
 .header_btns{
@@ -37,17 +39,33 @@ nav a{font-family: "Roboto", sans-serif;}
     font:700 0.9rem "Roboto", sans-serif;
     width: 150px;
     border-radius: 5px;
+    transition: .3s;
 }
 .look_btn{background-color: #8B5CF6;}
+.look_btn:hover{background-color: #704ac9;}
+.search_box input{
+    padding: 12px 30px;
+    border-radius: 5px;
+    border: none;
+    outline: none;
+}
+.fa-magnifying-glass{
+    left: 8px;
+    top: 13px;
+}
+.fa-xmark{
+    right: 8px;
+    top: 13px;
+    color: #0707a0;
+}
 main, header{background-color: #E5E7EB;}
 .rand_country{
+    display: flex;
     flex-direction: column;
     border-bottom: 2px solid #8B5CF6;
     gap: 20px;
 }
-.rand_country_info{
-    padding: 20px;
-}
+.rand_country_info{padding: 20px;}
 .rand_country_img{width: 100%;}
 .rand_country_img img{
     width: 100%; 
@@ -95,17 +113,27 @@ main, header{background-color: #E5E7EB;}
 .country_name span{font: 600 1rem "Roboto", sans-serif #333;}
 .population span, .area span {font:400 0.8rem "Roboto", sans-serif #666;}
 
-
-@media (min-width:768px){
+@media (min-width:830px){
     .navlinks .fa-bars{display: none;}
     .mode_btn{
         position: absolute;
-        right: 0;
-        top: 40px;
+        right: 20px;
+        top: 35px;
     }
     .navlinks{justify-content: center;}
     .left_links, .right_links{display: flex;}
-    .fa-earth-americas{margin: 0 20px;}
+    .left_links, .right_links{
+        justify-content: center;   
+        gap: 10px;
+    }    
+    .left_links a, .right_links a{
+        color: black;
+        border-bottom: 2px solid #e7e6e6;
+        white-space: nowrap;
+        transition: .3s;
+    }
+    .left_links a:hover, .right_links a:hover{border-bottom: 2px solid #aca9a9;}
+    .navlinks .fa-earth-americas{margin: 0 20px;}
     .header_content h1{font: 700 3rem "Roboto", sans-serif;}
     .header_content h2{font: 700 2.4rem "Roboto", sans-serif;}
     .header_btns{flex-direction: row;}
@@ -123,5 +151,6 @@ main, header{background-color: #E5E7EB;}
 }
 @media (min-width:1024px){
     .country{width: 32%;}
+    .left_links, .right_links{gap: 20px;}
 }
 
