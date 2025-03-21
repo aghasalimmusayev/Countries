@@ -1,4 +1,3 @@
-let data;
 let regions = []
 let smLinks = document.querySelector(".sm_links");
 let leftLinks = document.querySelector(".left_links");
@@ -6,16 +5,26 @@ let rightLinks = document.querySelector(".right_links");
 let allCountries = document.querySelector(".fa-earth-americas");
 let countryDetail = document.querySelector(".country_detail");
 
-getData();
-let idCode = []
+// let data;
+// getData();
+getInlineData();
+
 async function getData() {
     const response = await fetch("https://raw.githubusercontent.com/TheOksigen/purfect_data/refs/heads/main/country.json");
     data = await response.json();
     showRegions();
     desctopLinksShow();
     mobileLinksShow();
-    filterRegion();
-    showCountryDetail();
+    // filterRegion();
+    // showCountryDetail();
+}
+function getInlineData(){
+    showRegions();
+    desctopLinksShow();
+    mobileLinksShow();
+    // randomCountryShow();
+    // showCountries();
+    // filterRegion();
 }
 
 smLinks.style.maxHeight = "0px";

@@ -39,11 +39,11 @@ function toggleSearch(){
     if(searchBox.style.display == "none") {
         searchBox.style.display = "initial";
         searchInput.focus();
-        randCountry.style.display = "none"
+        randCountryBox.style.display = "none"
     }
     else{
         searchBox.style.display = "none"
-        randCountry.style.display = "flex"
+        randCountryBox.style.display = "flex"
     }
 
 }
