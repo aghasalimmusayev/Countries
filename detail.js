@@ -65,7 +65,7 @@ function showCountryDetail() {
     countryDetail.innerHTML = ""
     countryDetail.innerHTML =
         `<div class="details">
-            <div class="country_detail_info p-4 bg-white">
+            <div class="country_detail_info p-4">
                 <h3 class="country_name">${country.name}
                     <span class="alpha_code">${country.alpha3Code}</span>
                 </h3>
@@ -100,7 +100,7 @@ function showBorderCountry(calling){
     countryDetail.innerHTML = ""
     countryDetail.innerHTML =
         `<div class="details">
-            <div class="country_detail_info p-4 bg-white">
+            <div class="country_detail_info p-4">
                 <h3 class="country_name">${country.name}
                     <span class="alpha_code">${country.alpha3Code}</span>
                 </h3>
