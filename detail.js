@@ -5,28 +5,20 @@ let rightLinks = document.querySelector(".right_links");
 let allCountries = document.querySelector(".fa-earth-americas");
 let countryDetail = document.querySelector(".country_detail");
 
-// let data;
-// getData();
-getInlineData();
-
+let data;
+getData();
 async function getData() {
     const response = await fetch("https://raw.githubusercontent.com/TheOksigen/purfect_data/refs/heads/main/country.json");
     data = await response.json();
     showRegions();
     desctopLinksShow();
     mobileLinksShow();
-    // filterRegion();
-    // showCountryDetail();
-}
-function getInlineData(){
-    showRegions();
-    desctopLinksShow();
-    mobileLinksShow();
-    // randomCountryShow();
-    // showCountries();
-    // filterRegion();
+    showCountryDetail();
 }
 
+allCountries.onclick = function(){
+    window.location.href = `https://countries-one-alpha.vercel.app`
+}
 smLinks.style.maxHeight = "0px";
 function toggleLinks(){
     if (smLinks.style.maxHeight === "0px" || smLinks.style.maxHeight == "") {
@@ -56,27 +48,6 @@ function mobileLinksShow(){
         smLinks.innerHTML +=
         `<li class="py-3 border-bottom"><a class="region_name" href="">${element}</a></li>`
     })
-}
-function filterRegion(){
-    let regionlar = document.querySelectorAll(".region_name");
-    regionlar.forEach(regionSec => {
-        regionSec.addEventListener("click", function(e){
-            e.preventDefault();
-            header.style.display = "none"
-            regionlar.forEach(r => {
-                r.style.color = "black"
-                r.style.borderBottom = "2px solid #e7e6e6"
-            })
-            this.style.color = "#8B5CF6"
-            this.style.borderBottom = "2px solid #8B5CF6"
-            allCountries.style.border = "none"
-            let filterRegion = data.filter(element => element.region == regionSec.textContent)
-            showCountries(filterRegion);
-        })
-    })
-}
-allCountries.onclick = function(){
-    window.location.href = `https://countries-one-alpha.vercel.app`
 }
 function showCountryDetail() {
     let params = new URLSearchParams(window.location.search);
