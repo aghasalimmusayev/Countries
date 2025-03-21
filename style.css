@@ -160,7 +160,7 @@ nav a{font-family: "Roboto", sans-serif;}
     width: 100%;
     display: flex;
     flex-direction: column;
-    background-color: #eee;
+    background-color: #E5E7EB;
 }
 .alpha_code{font: 400 0.9rem "Roboto", sans-serif;margin-left: 10px;}
 .country_name{font: 500 1.7rem "Roboto", sans-serif;}
