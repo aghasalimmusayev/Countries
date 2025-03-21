@@ -1,4 +1,3 @@
-let data;
 let regions = []
 let countries = document.querySelector(".countries");
 let randomCountry = document.querySelector(".rand_country");
@@ -12,11 +11,21 @@ let randCountryBox = document.querySelector(".rand_country_box");
 let header = document.querySelector("header");
 let allCountries = document.querySelector(".fa-earth-americas");
 
-getData();
-let idCode = []
-async function getData() {
+// let data;
+// getFetchData();
+getInlineData();
+
+async function getFetchData() {
     const response = await fetch("https://raw.githubusercontent.com/TheOksigen/purfect_data/refs/heads/main/country.json");
     data = await response.json();
+    showRegions();
+    desctopLinksShow();
+    mobileLinksShow();
+    randomCountryShow();
+    showCountries();
+    filterRegion();
+}
+function getInlineData(){
     showRegions();
     desctopLinksShow();
     mobileLinksShow();
@@ -129,9 +138,11 @@ function showCountries(olkeler = data){
     });
 }
 function showDetail(calling){
-    window.location.href = `http://127.0.0.1:5501/DivAcademy/Websites/Countries/detail.html?id=${calling}`
-    console.log(alpha);
+    window.location.href = `https://countries-one-alpha.vercel.app/detail.html?id=${calling}`
 }
+// function showDetail(calling){
+//     window.location.href = `http://127.0.0.1:5501/DivAcademy/Websites/Countries/detail.html?id=${calling}`
+// }
 function filterRegion(){
     let regionlar = document.querySelectorAll(".region_name");
     regionlar.forEach(regionSec => {

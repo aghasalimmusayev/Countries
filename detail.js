@@ -76,7 +76,6 @@ allCountries.onclick = function(){
     allCountries.style.borderBottom = "2px solid #8B5CF6"
     showCountries();
 }
-
 function showCountryDetail() {
     let params = new URLSearchParams(window.location.search);
     let id = params.get('id');
@@ -84,10 +83,48 @@ function showCountryDetail() {
     let serhedler = "";
     if (country.borders && country.borders.length > 0) {
         country.borders.forEach(border => {
-            serhedler += `<span class="border_name text-white mx-1">${border}</span> `;
+            let borderCountry = data.find(item => item.alpha3Code == border)
+            serhedler += `<span class="border_name text-white mx-1" 
+                onclick="showBorderCountry('${borderCountry.callingCodes[0]}')">${border}</span>`;
         });
     }
     else serhedler = `<span class="border_name text-white mx-1">No borders</span>`;
+    countryDetail.innerHTML = ""
+    countryDetail.innerHTML =
+        `<div class="details">
+            <div class="country_detail_info p-4 bg-white">
+                <h3 class="country_name">${country.name}
+                    <span class="alpha_code">${country.alpha3Code}</span>
+                </h3>
+                <p class="capital">Capital: ${country.capital}</p>
+                <p class="country_region">Region: ${country.region}</p>
+                <p class="alternative_name">Alternative names: 
+                    <span class="ms-5">${country.altSpellings ? country.altSpellings[2] : "Yoxdur"}</span>
+                </p>
+                <p class="borders d-flex my-2">${serhedler}</p>
+                <div class="people_area_info">
+                    <span class="population">Population: ${country.population}</span>
+                    <span class="area">Area: ${country.area} km²</span>
+                </div>
+            </div>
+            <div class="country_detail_img">
+                <img src="${country.flag}" alt="country_flag">
+            </div>
+        </div>`;
+}
+function showBorderCountry(calling){
+    window.location.href = `https://countries-one-alpha.vercel.app/detail.html?id=${calling}`
+    let country = data.find(item => item.callingCodes[0] == calling);
+    let serhedler = "";
+    if (country.borders && country.borders.length > 0) {
+        country.borders.forEach(border => {
+            let borderCountry = data.find(item => item.alpha3Code == border)
+            serhedler += `<span class="border_name text-white mx-1" 
+                onclick="showBorderCountry('${borderCountry.callingCodes[0]}')">${border}</span>`;
+        });
+    }
+    else serhedler = `<span class="border_name text-white mx-1">No borders</span>`;
+    countryDetail.innerHTML = ""
     countryDetail.innerHTML =
         `<div class="details">
             <div class="country_detail_info p-4 bg-white">
@@ -110,4 +147,3 @@ function showCountryDetail() {
             </div>
         </div>`;
 }
-
