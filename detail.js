@@ -67,14 +67,7 @@ function filterRegion(){
     })
 }
 allCountries.onclick = function(){
-    header.style.display = "block"
-    let regionlar = document.querySelectorAll(".region_name");
-    regionlar.forEach(r => {
-        r.style.color = "black"
-        r.style.borderBottom = "2px solid #e7e6e6"
-    })
-    allCountries.style.borderBottom = "2px solid #8B5CF6"
-    showCountries();
+    window.location.href = `https://countries-one-alpha.vercel.app`
 }
 function showCountryDetail() {
     let params = new URLSearchParams(window.location.search);
