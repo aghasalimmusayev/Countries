@@ -19,6 +19,9 @@ async function getData() {
 allCountries.onclick = function(){
     window.location.href = `https://countries-one-alpha.vercel.app`
 }
+// allCountries.onclick = function(){
+//     window.location.href = `http://127.0.0.1:5501/DivAcademy/Websites/Countries/index.html`
+// }
 smLinks.style.maxHeight = "0px";
 function toggleLinks(){
     if (smLinks.style.maxHeight === "0px" || smLinks.style.maxHeight == "") {
@@ -29,25 +32,28 @@ function toggleLinks(){
 function showRegions(){
     regions = [...new Set(data.map(element => element.region))];
 }
-function desctopLinksShow(){
+function desctopLinksShow() {
     regions
-    .slice(0, 4)
-    .forEach(element => {
-        leftLinks.innerHTML +=
-            `<li><a class="region_name py-4 px-2" href="">${element}</a></li>`
-    })
+        .slice(0, 4)
+        .forEach(element => {
+            leftLinks.innerHTML +=
+            `<li><a class="region_name py-4 px-2" href="https://countries-one-alpha.vercel.app?region=${element}">${element}</a></li>`;
+            // `<li><a class="region_name py-4 px-2" href="http://127.0.0.1:5501/DivAcademy/Websites/Countries/index.html?region=${element}">${element}</a></li>`;
+        });
     regions
-    .slice(4, 8)
-    .forEach(element => {
-        rightLinks.innerHTML +=
-            `<li><a class="region_name py-4 px-2" href="">${element}</a></li>`
-    })
+        .slice(4, 8)
+        .forEach(element => {
+            rightLinks.innerHTML +=
+            `<li><a class="region_name py-4 px-2" href="https://countries-one-alpha.vercel.app?region=${element}">${element}</a></li>`;
+            // `<li><a class="region_name py-4 px-2" href="http://127.0.0.1:5501/DivAcademy/Websites/Countries/index.html?region=${element}">${element}</a></li>`;
+        });
 }
-function mobileLinksShow(){
+function mobileLinksShow() {
     regions.forEach(element => {
         smLinks.innerHTML +=
-        `<li class="py-3 border-bottom"><a class="region_name" href="">${element}</a></li>`
-    })
+        `<li class="py-3 border-bottom"><a class="region_name" href="https://countries-one-alpha.vercel.app?region=${element}">${element}</a></li>`;
+        // `<li class="py-3 border-bottom"><a class="region_name" href="http://127.0.0.1:5501/DivAcademy/Websites/Countries/index.html?region=${element}">${element}</a></li>`;
+    });
 }
 function showCountryDetail() {
     let params = new URLSearchParams(window.location.search);

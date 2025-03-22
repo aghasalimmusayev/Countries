@@ -25,15 +25,35 @@ async function getFetchData() {
     showCountries();
     filterRegion();
 }
-function getInlineData(){
+function getInlineData() {
     showRegions();
     desctopLinksShow();
     mobileLinksShow();
     randomCountryShow();
-    showCountries();
     filterRegion();
+    const urlParams = new URLSearchParams(window.location.search);
+    const selectedRegion = urlParams.get("region");
+    if (selectedRegion) {
+        let filterRegion = data.filter(element => element.region === selectedRegion);
+        showCountries(filterRegion);
+        let regionlar = document.querySelectorAll(".region_name");
+        regionlar.forEach(r => {
+            if (r.textContent === selectedRegion) {
+                r.style.color = "#8B5CF6";
+                r.style.borderBottom = "2px solid #8B5CF6";
+            }
+            else {
+                r.style.color = "black";
+                r.style.borderBottom = "2px solid #e7e6e6";
+            }
+        });
+        header.style.display = "none";
+        allCountries.style.border = "none";
+    }
+    else {
+        showCountries();
+    }
 }
-
 searchBox.style.display = "none"
 function toggleSearch(){
     if(searchBox.style.display == "none") {
@@ -158,6 +178,7 @@ function filterRegion(){
             allCountries.style.border = "none"
             let filterRegion = data.filter(element => element.region == regionSec.textContent)
             showCountries(filterRegion);
+            window.history.pushState({}, "", `?region=${regionSec.textContent}`);
         })
     })
 }
