@@ -13,6 +13,7 @@ let allCountries = document.querySelector(".fa-earth-americas");
 let lightMode = document.querySelector(".light_mode");
 let darkMode = document.querySelector(".dark_mode");
 let themeLink = document.querySelector("#themeLink");
+let faBars = document.querySelector(".fa-bars");
 
 // let data;
 // getFetchData();
@@ -57,17 +58,16 @@ function getInlineData() {
         showCountries();
     }
 }
-lightMode.style.display = "none"
 let currentTheme = localStorage.getItem("theme")
-if(currentTheme == "dark"){
+if(!currentTheme || currentTheme == "light"){
+    themeLink.setAttribute("href", "style.css")
+    lightMode.style.display = "none"
+    darkMode.style.display = "block"
+}
+else if(currentTheme == "dark"){
     themeLink.setAttribute("href", "dark.css")
     darkMode.style.display = "none"
     lightMode.style.display = "block"
-}
-else{
-    lightMode.style.display = "none"
-    darkMode.style.display = "block"
-    themeLink.setAttribute("href", "style.css")
 }
 function lightModeChange(){
     lightMode.style.display = "none"
@@ -113,6 +113,11 @@ function toggleLinks(){
     } 
     else smLinks.style.maxHeight = "0px";
 }
+document.addEventListener("click", function(event) {
+    if (!smLinks.contains(event.target) && (!faBars.contains(event.target))) {
+        smLinks.style.maxHeight = "0px";
+    }
+});
 function showRegions(){
     regions = [...new Set(data.map(element => element.region))];
 }
@@ -205,6 +210,7 @@ function filterRegion(){
             let filterRegion = data.filter(element => element.region == regionSec.textContent)
             showCountries(filterRegion);
             window.history.pushState({}, "", `?region=${regionSec.textContent}`);
+            smLinks.style.maxHeight = "0px";
         })
     })
 }

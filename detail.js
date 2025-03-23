@@ -4,6 +4,9 @@ let leftLinks = document.querySelector(".left_links");
 let rightLinks = document.querySelector(".right_links");
 let allCountries = document.querySelector(".fa-earth-americas");
 let countryDetail = document.querySelector(".country_detail");
+let lightMode = document.querySelector(".light_mode");
+let darkMode = document.querySelector(".dark_mode");
+let themeLink = document.querySelector("#themeLink");
 
 let data;
 getData();
@@ -55,17 +58,16 @@ function mobileLinksShow() {
         // `<li class="py-3 border-bottom"><a class="region_name" href="http://127.0.0.1:5501/DivAcademy/Websites/Countries/index.html?region=${element}">${element}</a></li>`;
     });
 }
-lightMode.style.display = "none"
 let currentTheme = localStorage.getItem("theme")
-if(currentTheme == "dark"){
+if(!currentTheme || currentTheme == "light"){
+    themeLink.setAttribute("href", "style.css")
+    lightMode.style.display = "none"
+    darkMode.style.display = "block"
+}
+else if(currentTheme == "dark"){
     themeLink.setAttribute("href", "dark.css")
     darkMode.style.display = "none"
     lightMode.style.display = "block"
-}
-else{
-    lightMode.style.display = "none"
-    darkMode.style.display = "block"
-    themeLink.setAttribute("href", "style.css")
 }
 function lightModeChange(){
     lightMode.style.display = "none"

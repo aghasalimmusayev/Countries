@@ -28,6 +28,15 @@ nav a{font-family: "Roboto", sans-serif;}
     color: #8B5CF6;
     border-bottom: 2px solid #8B5CF6;
 }
+.mode_btn img{
+    border-radius: 50%;
+    background-color: white;
+    padding: 2px;
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+    cursor: pointer;
+}
 
 /**<--HEADER-->*/
 .header_content{gap: 30px; height: 60vh;}
@@ -151,7 +160,7 @@ nav a{font-family: "Roboto", sans-serif;}
     align-items: center;
 }
 .details{
-    width: 80%;
+    width: 90%;
     margin: auto;
     display: flex;
     flex-direction: column-reverse;
@@ -191,15 +200,6 @@ nav a{font-family: "Roboto", sans-serif;}
         position: absolute;
         right: 20px;
         top: 30px;
-        img{
-            border-radius: 50%;
-            background-color: white;
-            padding: 2px;
-            width: 30px;
-            height: 30px;
-            object-fit: cover;
-            cursor: pointer;
-        }
     }
     .navlinks{justify-content: center;}
     .left_links, .right_links{display: flex;}
