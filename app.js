@@ -10,6 +10,8 @@ let searchBox = document.querySelector(".search_box");
 let randCountryBox = document.querySelector(".rand_country_box");
 let header = document.querySelector("header");
 let allCountries = document.querySelector(".fa-earth-americas");
+let lightMode = document.querySelector(".light_mode");
+let darkMode = document.querySelector(".dark_mode");
 
 // let data;
 // getFetchData();
@@ -54,6 +56,15 @@ function getInlineData() {
         showCountries();
     }
 }
+lightMode.style.display = "none"
+function lightModeChange(){
+    lightMode.style.display = "none"
+    darkMode.style.display = "block"
+}
+function darkModeChange(){
+    darkMode.style.display = "none"
+    lightMode.style.display = "block"
+}
 searchBox.style.display = "none"
 function toggleSearch(){
     if(searchBox.style.display == "none") {
@@ -65,7 +76,6 @@ function toggleSearch(){
         searchBox.style.display = "none"
         randCountryBox.style.display = "flex"
     }
-
 }
 faXmark.style.display = "none"
 function searchCountry(){
@@ -126,7 +136,7 @@ function randomCountryShow(){
                 </p>
                 <p class="area">
                     <span>Area:</span>
-                    <span>${data[randNum].area} km2</span>
+                    <span>${data[randNum].area} km²</span>
                 </p>
                 <p class="population">
                     <span>Population:</span>
@@ -143,7 +153,7 @@ function showCountries(olkeler = data){
                 <div class="country_img">
                     <img src="${country.flag}" alt="country_flag">
                 </div>
-                <div class="country_info p-3 bg-white">
+                <div class="country_info p-3">
                     <h2 class="country_region">${country.region}, ${country.callingCodes[0]}</h2>
                     <h3 class="country_name my-3">
                         <span>${country.name}</span>
