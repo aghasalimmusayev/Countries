@@ -55,6 +55,30 @@ function mobileLinksShow() {
         // `<li class="py-3 border-bottom"><a class="region_name" href="http://127.0.0.1:5501/DivAcademy/Websites/Countries/index.html?region=${element}">${element}</a></li>`;
     });
 }
+lightMode.style.display = "none"
+let currentTheme = localStorage.getItem("theme")
+if(currentTheme == "dark"){
+    themeLink.setAttribute("href", "dark.css")
+    darkMode.style.display = "none"
+    lightMode.style.display = "block"
+}
+else{
+    lightMode.style.display = "none"
+    darkMode.style.display = "block"
+    themeLink.setAttribute("href", "style.css")
+}
+function lightModeChange(){
+    lightMode.style.display = "none"
+    darkMode.style.display = "block"
+    themeLink.setAttribute("href", "style.css")
+    localStorage.setItem("theme", "light");
+}
+function darkModeChange(){
+    darkMode.style.display = "none"
+    lightMode.style.display = "block"
+    themeLink.setAttribute("href", "dark.css")
+    localStorage.setItem("theme", "dark");
+}
 function showCountryDetail() {
     let params = new URLSearchParams(window.location.search);
     let id = params.get('id');

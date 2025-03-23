@@ -12,6 +12,7 @@ let header = document.querySelector("header");
 let allCountries = document.querySelector(".fa-earth-americas");
 let lightMode = document.querySelector(".light_mode");
 let darkMode = document.querySelector(".dark_mode");
+let themeLink = document.querySelector("#themeLink");
 
 // let data;
 // getFetchData();
@@ -57,13 +58,28 @@ function getInlineData() {
     }
 }
 lightMode.style.display = "none"
+let currentTheme = localStorage.getItem("theme")
+if(currentTheme == "dark"){
+    themeLink.setAttribute("href", "dark.css")
+    darkMode.style.display = "none"
+    lightMode.style.display = "block"
+}
+else{
+    lightMode.style.display = "none"
+    darkMode.style.display = "block"
+    themeLink.setAttribute("href", "style.css")
+}
 function lightModeChange(){
     lightMode.style.display = "none"
     darkMode.style.display = "block"
+    themeLink.setAttribute("href", "style.css")
+    localStorage.setItem("theme", "light");
 }
 function darkModeChange(){
     darkMode.style.display = "none"
     lightMode.style.display = "block"
+    themeLink.setAttribute("href", "dark.css")
+    localStorage.setItem("theme", "dark");
 }
 searchBox.style.display = "none"
 function toggleSearch(){
@@ -171,7 +187,7 @@ function showDetail(calling){
     window.location.href = `https://countries-one-alpha.vercel.app/detail.html?id=${calling}`
 }
 // function showDetail(calling){
-//     window.location.href = `http://127.0.0.1:5501/DivAcademy/Websites/Countries/detail.html?id=${calling}`
+//     window.location.href = `http://127.0.0.1:5501/Websites/Countries/detail.html?id=${calling}`
 // }
 function filterRegion(){
     let regionlar = document.querySelectorAll(".region_name");

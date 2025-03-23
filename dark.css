@@ -71,7 +71,7 @@ nav a{font-family: "Roboto", sans-serif;}
     top: 13px;
     color: #0707a0;
 }
-.bg_main, header{background-color: var(--bg_color);}
+.bg_main, main, header, footer{background-color: var(--bg_color);}
 .rand_country{
     display: flex;
     flex-direction: column;
@@ -145,24 +145,6 @@ nav a{font-family: "Roboto", sans-serif;}
 .country .country_region {font: 700 2rem "Roboto", sans-serif; color: var(--text_color);}
 .country_name span{font: 600 1rem "Roboto", sans-serif; color: var(--text_color);}
 
-/**<--FOOTER-->*/
-.footer_content img{
-    width: 50px;
-    height: 50px;
-    object-fit: cover;
-    border-radius: 50%;
-}
-.social{gap: 10px;}
-.social i{
-    background-color: var(--pink_color);
-    font-size: 20px;
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
-    text-align: center;
-    cursor: pointer;
-}
-
 /**<--DETAILS_HTML-->*/
 .detail_box{
     height: 100vh;
@@ -171,6 +153,7 @@ nav a{font-family: "Roboto", sans-serif;}
     align-items: center;
 }
 .details{
+    background-color: var(--bg_dark_color);
     width: 80%;
     margin: auto;
     display: flex;
@@ -181,7 +164,6 @@ nav a{font-family: "Roboto", sans-serif;}
     width: 100%;
     display: flex;
     flex-direction: column;
-    background-color: var(--bg_color);
 }
 .alpha_code{font: 400 0.9rem "Roboto", sans-serif;margin-left: 10px;color: var(--text_color);}
 .country_name{
@@ -206,6 +188,25 @@ nav a{font-family: "Roboto", sans-serif;}
     cursor: pointer;
     padding: 2px 7px;
     margin-bottom: 10px;
+}
+
+/**<--FOOTER-->*/
+.footer_content img{
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+footer p{font: 400 1rem "Roboto", sans-serif; color: var(--text_color);}
+.social{gap: 10px;}
+.social i{
+    background-color: var(--pink_color);
+    font-size: 20px;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    text-align: center;
+    cursor: pointer;
 }
 
 @media (min-width:830px){
