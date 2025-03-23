@@ -30,7 +30,7 @@ nav a{font-family: "Roboto", sans-serif;}
     cursor: pointer;
     padding: 10px;    
 }
-.navlinks .fa-bars{display: initial;}
+.navlinks .fa-bars{display: initial; color: var(--text_color);}
 .fa-earth-americas{
     color: var(--pink_color);
     border-bottom: 2px solid var(--pink_color);
