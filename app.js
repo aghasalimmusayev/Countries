@@ -208,13 +208,14 @@ function showDetail(calling){
 //     window.location.href = `http://127.0.0.1:5500/Websites/Countries/detail.html?id=${calling}`
 // }
 function filterRegion(){
+    let currentTheme = localStorage.getItem("theme")
     let regionlar = document.querySelectorAll(".region_name");
     regionlar.forEach(regionSec => {
         regionSec.addEventListener("click", function(e){
             e.preventDefault();
             header.style.display = "none"
             regionlar.forEach(r => {
-                r.style.color = "black"
+                !currentTheme || currentTheme == "light" ? r.style.color = "black" : r.style.color = "white"
                 r.style.borderBottom = "2px solid #e7e6e6"
             })
             this.style.color = "#8B5CF6"
@@ -228,10 +229,12 @@ function filterRegion(){
     })
 }
 allCountries.onclick = function(){
+    window.location.href = `https://countries-one-alpha.vercel.app`
+    // window.location.href = `http://127.0.0.1:5500/Websites/Countries/index.html`
     header.style.display = "block"
     let regionlar = document.querySelectorAll(".region_name");
     regionlar.forEach(r => {
-        r.style.color = "black"
+        !currentTheme || currentTheme == "light" ? r.style.color = "black" : r.style.color = "white"
         r.style.borderBottom = "2px solid #e7e6e6"
     })
     allCountries.style.borderBottom = "2px solid #8B5CF6"

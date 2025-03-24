@@ -23,7 +23,7 @@ allCountries.onclick = function(){
     window.location.href = `https://countries-one-alpha.vercel.app`
 }
 // allCountries.onclick = function(){
-//     window.location.href = `http://127.0.0.1:5501/DivAcademy/Websites/Countries/index.html`
+//     window.location.href = `http://127.0.0.1:5500/Websites/Countries/index.html`
 // }
 smLinks.style.maxHeight = "0px";
 function toggleLinks(){
@@ -41,21 +41,21 @@ function desctopLinksShow() {
         .forEach(element => {
             leftLinks.innerHTML +=
             `<li><a class="region_name py-4 px-2" href="https://countries-one-alpha.vercel.app?region=${element}">${element}</a></li>`;
-            // `<li><a class="region_name py-4 px-2" href="http://127.0.0.1:5501/DivAcademy/Websites/Countries/index.html?region=${element}">${element}</a></li>`;
+            // `<li><a class="region_name py-4 px-2" href="http://127.0.0.1:5500/Websites/Countries/index.html?region=${element}">${element}</a></li>`;
         });
     regions
         .slice(4, 8)
         .forEach(element => {
             rightLinks.innerHTML +=
             `<li><a class="region_name py-4 px-2" href="https://countries-one-alpha.vercel.app?region=${element}">${element}</a></li>`;
-            // `<li><a class="region_name py-4 px-2" href="http://127.0.0.1:5501/DivAcademy/Websites/Countries/index.html?region=${element}">${element}</a></li>`;
+            // `<li><a class="region_name py-4 px-2" href="http://127.0.0.1:5500/Websites/Countries/index.html?region=${element}">${element}</a></li>`;
         });
 }
 function mobileLinksShow() {
     regions.forEach(element => {
         smLinks.innerHTML +=
         `<li class="py-3 border-bottom"><a class="region_name" href="https://countries-one-alpha.vercel.app?region=${element}">${element}</a></li>`;
-        // `<li class="py-3 border-bottom"><a class="region_name" href="http://127.0.0.1:5501/DivAcademy/Websites/Countries/index.html?region=${element}">${element}</a></li>`;
+        // `<li class="py-3 border-bottom"><a class="region_name" href="http://127.0.0.1:5500/Websites/Countries/index.html?region=${element}">${element}</a></li>`;
     });
 }
 let currentTheme = localStorage.getItem("theme")
