@@ -14,6 +14,8 @@ let lightMode = document.querySelector(".light_mode");
 let darkMode = document.querySelector(".dark_mode");
 let themeLink = document.querySelector("#themeLink");
 let faBars = document.querySelector(".fa-bars");
+let moreBtn = document.querySelector(".more_btn");
+let say = 12;
 
 // let data;
 // getFetchData();
@@ -168,18 +170,21 @@ function randomCountryShow(){
 }
 function showCountries(olkeler = data){
     countries.innerHTML = ""
-    olkeler.forEach(country => {
+    olkeler
+    .slice(0, say)
+    .forEach(country => {
         countries.innerHTML +=
             `<div class="country d-flex flex-column" onclick="showDetail(${country.callingCodes[0]})">
                 <div class="country_img">
                     <img src="${country.flag}" alt="country_flag">
                 </div>
                 <div class="country_info p-3">
-                    <h2 class="country_region">${country.region}, ${country.callingCodes[0]}</h2>
+                    <h2 class="country_region">${country.region}</h2>
                     <h3 class="country_name my-3">
-                        <span>${country.name}</span>
+                        <span>${country.name}</span>,
                         <span>${country.capital}</span>
                     </h3>
+                    <p class="code">Calling code: ${country.callingCodes[0]}</p>
                     <div class="people_area_info d-flex align-items-center justify-content-between">
                         <span class="population">Population: ${country.population}</span>
                         <span class="area">Area: ${country.area} km²</span>
@@ -187,6 +192,12 @@ function showCountries(olkeler = data){
                </div>
             </div>`
     });
+    moreBtn.innerHTML = ""
+    if(say < +olkeler.length) moreBtn.innerHTML = `<button class="show_more_btn" onclick="showMore()">Show More</button>`
+}
+function showMore(){
+    say = say + 12;
+    showCountries();
 }
 function showDetail(calling){
     window.location.href = `https://countries-one-alpha.vercel.app/detail.html?id=${calling}`

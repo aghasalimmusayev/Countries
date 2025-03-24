@@ -44,6 +44,28 @@ nav a{font-family: "Roboto", sans-serif;}
     object-fit: cover;
     cursor: pointer;
 }
+.more_btn{
+    display: flex;
+    justify-content: center;
+}
+.more_btn button{
+    background-color: var(--bg_color);
+    border: 1px solid #d5d9d9;
+    border-radius: 10px;
+    box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
+    color: var(--text_color);
+    display: inline-block;
+    font: 600 italic 0.9rem "Roboto", sans-serif;
+    letter-spacing: 1px;
+    padding: 10px 15px;
+    transition: .3s;
+}
+.more_btn button:hover {background-color: var(--bg_dark_color);}
+.more_btn button:focus {
+    border-color: #008296;
+    box-shadow: rgba(213, 217, 217, .5) 0 2px 5px 0;
+    outline: 0;
+}
 
 /**<--HEADER-->*/
 .header_content{gap: 30px; height: 60vh;}
@@ -151,8 +173,8 @@ nav a{font-family: "Roboto", sans-serif;}
     font: 400 0.9rem "Roboto", sans-serif;
     color: var(--text_color);
 }
-.country .country_region {font: 700 2rem "Roboto", sans-serif; color: var(--text_color);}
-.country_name span{font: 600 1rem "Roboto", sans-serif; color: var(--text_color);}
+.country_name span {font: 700 1.5rem "Roboto", sans-serif; color: var(--text_color)}
+.country .country_region{font: 600 1rem "Roboto", sans-serif; color: var(--text_color)}
 
 /**<--DETAILS_HTML-->*/
 .detail_box{
@@ -175,9 +197,11 @@ nav a{font-family: "Roboto", sans-serif;}
     flex-direction: column;
 }
 .alpha_code{font: 400 0.9rem "Roboto", sans-serif;margin-left: 10px;color: var(--text_color);}
-.country_name{
-    font: 500 1.7rem "Roboto", sans-serif;
+.country_name{color: var(--text_color);}
+.code{
+    font: 400 0.9rem "Roboto", sans-serif; 
     color: var(--text_color);
+    margin: 10px 0;
 }
 .capital, .country_region, .alternative_name{font: 400 1rem "Roboto", sans-serif; margin: 5px 0;color: var(--text_color);}
 .alternative_name span{white-space: nowrap;}
