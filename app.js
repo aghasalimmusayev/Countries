@@ -216,7 +216,7 @@ function filterRegion(){
             header.style.display = "none"
             regionlar.forEach(r => {
                 !currentTheme || currentTheme == "light" ? r.style.color = "black" : r.style.color = "white"
-                r.style.borderBottom = "2px solid #e7e6e6"
+                r.style.borderBottom = "2px solid transparent"
             })
             this.style.color = "#8B5CF6"
             this.style.borderBottom = "2px solid #8B5CF6"
@@ -235,7 +235,7 @@ allCountries.onclick = function(){
     let regionlar = document.querySelectorAll(".region_name");
     regionlar.forEach(r => {
         !currentTheme || currentTheme == "light" ? r.style.color = "black" : r.style.color = "white"
-        r.style.borderBottom = "2px solid #e7e6e6"
+        r.style.borderBottom = "2px solid transparent"
     })
     allCountries.style.borderBottom = "2px solid #8B5CF6"
     showCountries();
