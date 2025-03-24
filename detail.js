@@ -89,8 +89,10 @@ function showCountryDetail() {
     if (country.borders && country.borders.length > 0) {
         country.borders.forEach(border => {
             let borderCountry = data.find(item => item.alpha3Code == border)
+            if(borderCountry.name !== "Armenia"){
             serhedler += `<span class="border_name text-white mx-1" 
                 onclick="showBorderCountry('${borderCountry.callingCodes[0]}')">${border}</span>`;
+            }
         });
     }
     else serhedler = `<span class="border_name text-white mx-1">No borders</span>`;
@@ -98,7 +100,8 @@ function showCountryDetail() {
     countryDetail.innerHTML =
         `<div class="details">
             <div class="country_detail_info p-4">
-                <h3 class="country_name">${country.name}
+                <h3 class="country_detail_name">
+                    <p class="country_name">${country.name}</p>
                     <span class="alpha_code">${country.alpha3Code}</span>
                 </h3>
                 <p class="capital">Capital: ${country.capital}</p>
@@ -119,13 +122,16 @@ function showCountryDetail() {
 }
 function showBorderCountry(calling){
     window.location.href = `https://countries-one-alpha.vercel.app/detail.html?id=${calling}`
+    // window.location.href = `http://127.0.0.1:5500/Websites/Countries/detail.html?id=${calling}`
     let country = data.find(item => item.callingCodes[0] == calling);
     let serhedler = "";
     if (country.borders && country.borders.length > 0) {
         country.borders.forEach(border => {
             let borderCountry = data.find(item => item.alpha3Code == border)
-            serhedler += `<span class="border_name text-white mx-1" 
+            if(borderCountry.name !== "Armenia"){
+                serhedler += `<span class="border_name text-white mx-1" 
                 onclick="showBorderCountry('${borderCountry.callingCodes[0]}')">${border}</span>`;
+            }
         });
     }
     else serhedler = `<span class="border_name text-white mx-1">No borders</span>`;
@@ -152,3 +158,5 @@ function showBorderCountry(calling){
             </div>
         </div>`;
 }
+
+// country.altSpellings bu hisse duzelmelidi

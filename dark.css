@@ -103,13 +103,13 @@ nav a{font-family: "Roboto", sans-serif;}
     color: #0707a0;
 }
 .bg_main, main, header, footer{background-color: var(--bg_color);}
+
 .rand_country{
     display: flex;
     flex-direction: column;
     border-bottom: 2px solid var(--pink_color);
     cursor: pointer;
 }
-.rand_country_info{padding: 20px;background-color: var(--bg_dark_color);}
 .rand_country_img{width: 100%;}
 .rand_country_img img{
     width: 100%; 
@@ -120,6 +120,8 @@ nav a{font-family: "Roboto", sans-serif;}
     display: flex;
     flex-direction: column;
     gap: 15px;
+    padding: 20px;
+    background-color: var(--bg_dark_color);
 }
 .rand_country_info h3{
     display: inline-block;
@@ -147,12 +149,6 @@ nav a{font-family: "Roboto", sans-serif;}
     margin-bottom: 20px;
     cursor: pointer;
 }
-.country_name{
-    display: inline-block;
-    border-bottom: 2px solid var(--bg_dark_color);
-    transition: .3s;
-}
-.country:hover h3{border-bottom: 2px solid var(--text_color);}
 .country_img {
     width: 100%;
     height: 200px;
@@ -161,6 +157,20 @@ nav a{font-family: "Roboto", sans-serif;}
     width: 100%;
     height: 100%;
     object-fit: cover;
+}
+.country:hover h3{border-bottom: 2px solid var(--text_color);}
+.country .country_region{font: 600 1rem "Roboto", sans-serif; color: var(--text_color)}
+.country_name{
+    display: inline-block;
+    border-bottom: 2px solid var(--bg_dark_color);
+    transition: .3s;
+    font: 700 1.5rem "Roboto", sans-serif; 
+    color: var(--text_color)
+}
+.code{
+    font: 400 0.9rem "Roboto", sans-serif; 
+    color: var(--text_color);
+    margin: 10px 0;
 }
 .people_area_info{
     display: flex;
@@ -173,8 +183,6 @@ nav a{font-family: "Roboto", sans-serif;}
     font: 400 0.9rem "Roboto", sans-serif;
     color: var(--text_color);
 }
-.country_name span {font: 700 1.5rem "Roboto", sans-serif; color: var(--text_color)}
-.country .country_region{font: 600 1rem "Roboto", sans-serif; color: var(--text_color)}
 
 /**<--DETAILS_HTML-->*/
 .detail_box{
@@ -196,16 +204,18 @@ nav a{font-family: "Roboto", sans-serif;}
     display: flex;
     flex-direction: column;
 }
-.alpha_code{font: 400 0.9rem "Roboto", sans-serif;margin-left: 10px;color: var(--text_color);}
 .country_name{color: var(--text_color);}
-.code{
-    font: 400 0.9rem "Roboto", sans-serif; 
-    color: var(--text_color);
-    margin: 10px 0;
-}
+.alpha_code{font: 400 0.9rem "Roboto", sans-serif;margin-left: 10px;color: var(--text_color);}
 .capital, .country_region, .alternative_name{font: 400 1rem "Roboto", sans-serif; margin: 5px 0;color: var(--text_color);}
 .alternative_name span{white-space: nowrap;}
 .borders{flex-wrap: wrap;}
+.border_name{
+    background-color: #475569;
+    font: 400 0.9rem "Roboto", sans-serif;
+    cursor: pointer;
+    padding: 2px 7px;
+    margin-bottom: 10px;
+}
 .country_detail_img{
     width: 100%;
     height: 250px;
@@ -214,13 +224,6 @@ nav a{font-family: "Roboto", sans-serif;}
         height: 100%;
         object-fit: cover;
     }
-}
-.border_name{
-    background-color: #475569;
-    font: 400 0.9rem "Roboto", sans-serif;
-    cursor: pointer;
-    padding: 2px 7px;
-    margin-bottom: 10px;
 }
 
 /**<--FOOTER-->*/

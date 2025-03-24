@@ -144,6 +144,7 @@ function mobileLinksShow(){
     })
 }
 function randomCountryShow(){
+    data = data.filter(olke => olke.name !== "Armenia")
     let randNum = Math.floor(Math.random() * data.length)
     randCountryBox.innerHTML =
         `<div class="rand_country" onclick="showDetail(${data[randNum].callingCodes[0]})">
@@ -170,6 +171,7 @@ function randomCountryShow(){
 }
 function showCountries(olkeler = data){
     countries.innerHTML = ""
+    olkeler = olkeler.filter(olke => olke.name !== "Armenia")
     olkeler
     .slice(0, say)
     .forEach(country => {
@@ -203,7 +205,7 @@ function showDetail(calling){
     window.location.href = `https://countries-one-alpha.vercel.app/detail.html?id=${calling}`
 }
 // function showDetail(calling){
-//     window.location.href = `http://127.0.0.1:5501/Websites/Countries/detail.html?id=${calling}`
+//     window.location.href = `http://127.0.0.1:5500/Websites/Countries/detail.html?id=${calling}`
 // }
 function filterRegion(){
     let regionlar = document.querySelectorAll(".region_name");
