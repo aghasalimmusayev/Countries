@@ -134,7 +134,7 @@ nav a{font-family: "Roboto", sans-serif;}
 }
 .country .country_region{font: 600 1rem "Roboto", sans-serif;}
 .country_name{
-    border-bottom: 2px solid white; 
+    border-bottom: 2px solid transparent; 
     transition: .4s;
     font: 700 1.5rem "Roboto", sans-serif;
 }

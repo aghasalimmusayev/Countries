@@ -98,6 +98,7 @@ function toggleSearch(){
 faXmark.style.display = "none"
 function searchCountry(){
     faXmark.style.display = searchInput.value == "" ? "none" : "initial"
+    data = data.filter(olke => olke.name !== "Armenia")
     let searchOlke = data.filter(element => 
         element.name.toLowerCase().includes(searchInput.value.toLowerCase())
     );
