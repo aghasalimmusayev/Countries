@@ -1,5 +1,12 @@
 /**<--NAVIGATION-->*/
-nav{padding: 35px;}
+.navigation{
+    width: 100%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    position: fixed;
+}
+nav{padding: 35px;width: 100%;background-color: white;}
 nav a{font-family: "Roboto", sans-serif;}
 .navlinks{justify-content: space-between;}
 .left_links, .right_links{display: none;}

@@ -18,19 +18,21 @@
 </head>
 
 <body>
-    <nav class="px-2 py-3 position-relative">
-        <div class="navlinks d-flex align-items-center p-0">
-            <ul class="left_links align-items-center"></ul>
-            <i class="fa-solid fa-earth-americas fs-1 p-2"></i>
-            <ul class="right_links align-items-center"></ul>
-            <div class="mode_btn">
-                <img class="light_mode" src="img/sun.png" alt="mode_img" onclick="lightModeChange()">
-                <img class="dark_mode" src="img/dark mode.png" alt="mode_img" onclick="darkModeChange()">
+    <div class="navigation">
+        <nav class="px-2 py-3 position-relative">
+            <div class="navlinks d-flex align-items-center p-0">
+                <ul class="left_links align-items-center"></ul>
+                <i class="fa-solid fa-earth-americas fs-1 p-2"></i>
+                <ul class="right_links align-items-center"></ul>
+                <div class="mode_btn">
+                    <img class="light_mode" src="img/sun.png" alt="mode_img" onclick="lightModeChange()">
+                    <img class="dark_mode" src="img/dark mode.png" alt="mode_img" onclick="darkModeChange()">
+                </div>
+                <ul class="sm_links position-absolute flex-column align-items-center"></ul>
+                <i class="fa-solid fa-bars fs-4" onclick="toggleLinks()"></i>
             </div>
-            <ul class="sm_links position-absolute flex-column align-items-center"></ul>
-            <i class="fa-solid fa-bars fs-4" onclick="toggleLinks()"></i>
-        </div>
-    </nav>
+        </nav>
+    </div>
 
     <header class="py-5">
         <div class="container">

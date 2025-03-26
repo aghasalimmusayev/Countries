@@ -6,7 +6,18 @@
 }
 
 /**<--NAVIGATION-->*/
-nav{padding: 35px;background-color: var(--bg_dark_color);}
+.navigation{
+    width: 100%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    position: fixed;
+}
+nav{
+    padding: 35px;
+    background-color: var(--bg_dark_color);
+    width: 100%;
+}
 nav a{font-family: "Roboto", sans-serif;}
 .navlinks{justify-content: space-between;}
 .left_links, .right_links{display: none;}
