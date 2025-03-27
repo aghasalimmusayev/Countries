@@ -28,8 +28,8 @@ async function getFetchData() {
     desctopLinksShow();
     mobileLinksShow();
     randomCountryShow();
-    showCountries();
     filterRegion();
+    showCountries();
 }
 function getInlineData() {
     showRegions();
@@ -37,6 +37,7 @@ function getInlineData() {
     mobileLinksShow();
     randomCountryShow();
     filterRegion();
+    let currentTheme = localStorage.getItem("theme")
     const urlParams = new URLSearchParams(window.location.search);
     const selectedRegion = urlParams.get("region");
     if (selectedRegion) {
@@ -49,7 +50,7 @@ function getInlineData() {
                 r.style.borderBottom = "2px solid #8B5CF6";
             }
             else {
-                r.style.color = "black";
+                r.style.color = currentTheme === "dark" ? "white" : "black";
                 r.style.borderBottom = "2px solid #e7e6e6";
             }
         });
