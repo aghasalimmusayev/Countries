@@ -15,6 +15,7 @@ let darkMode = document.querySelector(".dark_mode");
 let themeLink = document.querySelector("#themeLink");
 let faBars = document.querySelector(".fa-bars");
 let moreBtn = document.querySelector(".more_btn");
+let currentFilteredRegion = null; // Bu yeni dəyişən əlavə olundu
 let say = 12;
 
 let data;
@@ -33,6 +34,7 @@ async function getFetchData() {
     const urlParams = new URLSearchParams(window.location.search);
     const selectedRegion = urlParams.get("region");
     if (selectedRegion) {
+        currentFilteredRegion = selectedRegion;
         moreBtn.innerHTML = ""
         let filterRegion = data.filter(element => element.region === selectedRegion);
         showCountries(filterRegion);
@@ -51,6 +53,7 @@ async function getFetchData() {
         allCountries.style.border = "none";
     }
     else {
+        currentFilteredRegion = null;
         showCountries();
     }
 }
@@ -196,6 +199,9 @@ function randomCountryShow(){
 }
 function showCountries(olkeler = data){
     countries.innerHTML = ""
+    if (currentFilteredRegion) {
+        olkeler = data.filter(element => element.region === currentFilteredRegion);
+    }
     olkeler = olkeler.filter(olke => olke.name !== "Armenia")
     olkeler
     .slice(0, say)
@@ -238,6 +244,8 @@ function filterRegion(){
     regionlar.forEach(regionSec => {
         regionSec.addEventListener("click", function(e){
             e.preventDefault();
+            currentFilteredRegion = regionSec.textContent;
+            say = 12; //  Sayı reset edin
             header.style.display = "none"
             regionlar.forEach(r => {
                 !currentTheme || currentTheme == "light" ? r.style.color = "black" : r.style.color = "white"
@@ -247,7 +255,6 @@ function filterRegion(){
             this.style.borderBottom = "2px solid #8B5CF6"
             allCountries.style.border = "none"
             let filterRegion = data.filter(element => element.region == regionSec.textContent)
-            moreBtn.innerHTML = ""
             showCountries(filterRegion);
             window.history.pushState({}, "", `?region=${regionSec.textContent}`);
             smLinks.style.maxHeight = "0px";
@@ -255,6 +262,8 @@ function filterRegion(){
     })
 }
 allCountries.onclick = function(){
+    currentFilteredRegion = null; 
+    say = 12; 
     window.location.href = `https://countries-one-alpha.vercel.app`
     // window.location.href = `http://127.0.0.1:5500/Websites/Countries/index.html`
     header.style.display = "block"
