@@ -258,6 +258,10 @@ function filterRegion(){
             showCountries(filterRegion);
             window.history.pushState({}, "", `?region=${regionSec.textContent}`);
             smLinks.style.maxHeight = "0px";
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });    
         })
     })
 }
