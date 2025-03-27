@@ -247,6 +247,7 @@ function filterRegion(){
             this.style.borderBottom = "2px solid #8B5CF6"
             allCountries.style.border = "none"
             let filterRegion = data.filter(element => element.region == regionSec.textContent)
+            moreBtn.innerHTML = ""
             showCountries(filterRegion);
             window.history.pushState({}, "", `?region=${regionSec.textContent}`);
             smLinks.style.maxHeight = "0px";
