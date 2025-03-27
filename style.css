@@ -6,7 +6,12 @@
     justify-content: center;
     position: fixed;
 }
-nav{padding: 35px;width: 100%;background-color: white;}
+nav{
+    padding: 35px;
+    width: 100%;
+    background-color: white;
+    transition: .4s;
+}
 nav a{font-family: "Roboto", sans-serif;}
 .navlinks{justify-content: space-between;}
 .left_links, .right_links{display: none;}
