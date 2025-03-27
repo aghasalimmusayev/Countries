@@ -1,4 +1,4 @@
-let regions = []
+let regions = [];
 let countries = document.querySelector(".countries");
 let randomCountry = document.querySelector(".rand_country");
 let smLinks = document.querySelector(".sm_links");
@@ -17,9 +17,9 @@ let faBars = document.querySelector(".fa-bars");
 let moreBtn = document.querySelector(".more_btn");
 let say = 12;
 
-// let data;
-// getFetchData();
-getInlineData();
+let data;
+getFetchData();
+// getInlineData();
 
 async function getFetchData() {
     const response = await fetch("https://raw.githubusercontent.com/TheOksigen/purfect_data/refs/heads/main/country.json");
@@ -29,7 +29,30 @@ async function getFetchData() {
     mobileLinksShow();
     randomCountryShow();
     filterRegion();
-    showCountries();
+    let currentTheme = localStorage.getItem("theme")
+    const urlParams = new URLSearchParams(window.location.search);
+    const selectedRegion = urlParams.get("region");
+    if (selectedRegion) {
+        moreBtn.innerHTML = ""
+        let filterRegion = data.filter(element => element.region === selectedRegion);
+        showCountries(filterRegion);
+        let regionlar = document.querySelectorAll(".region_name");
+        regionlar.forEach(r => {
+            if (r.textContent === selectedRegion) {
+                r.style.color = "#8B5CF6";
+                r.style.borderBottom = "2px solid #8B5CF6";
+            }
+            else {
+                r.style.color = currentTheme === "dark" ? "white" : "black";
+                r.style.borderBottom = "2px solid #e7e6e6";
+            }
+        });
+        header.style.display = "none";
+        allCountries.style.border = "none";
+    }
+    else {
+        showCountries();
+    }
 }
 function getInlineData() {
     showRegions();
