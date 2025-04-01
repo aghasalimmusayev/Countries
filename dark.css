@@ -264,18 +264,18 @@ footer p{font: 400 1rem "Roboto", sans-serif; color: var(--text_color);}
         top: 30px;
     }
     .navlinks{justify-content: center;}
-    .left_links, .right_links{display: flex;}
     .left_links, .right_links{
+        display: flex;    
         justify-content: center;   
         gap: 10px;
     }    
     .left_links a, .right_links a{
         color: var(--text_color);
-        border-bottom: none;
+        border-bottom: 2px solid transparent;
         white-space: nowrap;
         transition: .4s;
     }
-    .left_links a:hover, .right_links a:hover{border-bottom: 1px solid #e7e6e6;}
+    .left_links a:hover, .right_links a:hover{border-bottom: 2px solid #e7e6e6;}
     .navlinks .fa-earth-americas{margin: 0 20px;}
     .header_content h1{font: 700 3rem "Roboto", sans-serif;}
     .header_content h2{font: 700 2.4rem "Roboto", sans-serif;}
