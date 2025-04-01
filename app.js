@@ -218,7 +218,7 @@ function filterRegion(){
             say = 12; //  Sayı reset edin
             header.style.display = "none"
             regionlar.forEach(r => {
-                !currentTheme || currentTheme == "light" ? r.style.color = "black" : r.style.color = "white"
+                r.style.color = !currentTheme || currentTheme == "light" ? "black" : "white"
                 r.style.borderBottom = "2px solid transparent"
             })
             this.style.color = "#8B5CF6"
