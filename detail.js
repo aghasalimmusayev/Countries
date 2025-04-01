@@ -1,3 +1,5 @@
+import { getData } from "./service.js";
+
 let regions = []
 let smLinks = document.querySelector(".sm_links");
 let leftLinks = document.querySelector(".left_links");
@@ -8,16 +10,15 @@ let lightMode = document.querySelector(".light_mode");
 let darkMode = document.querySelector(".dark_mode");
 let themeLink = document.querySelector("#themeLink");
 
-let data;
-getData();
-async function getData() {
-    const response = await fetch("https://raw.githubusercontent.com/TheOksigen/purfect_data/refs/heads/main/country.json");
-    data = await response.json();
+let data
+async function useData() {
+    data = await getData()
     showRegions();
     desctopLinksShow();
     mobileLinksShow();
     showCountryDetail();
 }
+useData();
 
 allCountries.onclick = function(){
     window.location.href = `https://countries-one-alpha.vercel.app`
@@ -26,7 +27,7 @@ allCountries.onclick = function(){
 //     window.location.href = `http://127.0.0.1:5500/Websites/Countries/index.html`
 // }
 smLinks.style.maxHeight = "0px";
-function toggleLinks(){
+window.toggleLinks = function (){
     if (smLinks.style.maxHeight === "0px" || smLinks.style.maxHeight == "") {
         smLinks.style.maxHeight = smLinks.scrollHeight + "px";
     } 
@@ -69,13 +70,13 @@ else if(currentTheme == "dark"){
     darkMode.style.display = "none"
     lightMode.style.display = "block"
 }
-function lightModeChange(){
+window.lightModeChange = function (){
     lightMode.style.display = "none"
     darkMode.style.display = "block"
     themeLink.setAttribute("href", "style.css")
     localStorage.setItem("theme", "light");
 }
-function darkModeChange(){
+window.darkModeChange = function (){
     darkMode.style.display = "none"
     lightMode.style.display = "block"
     themeLink.setAttribute("href", "dark.css")
@@ -120,7 +121,7 @@ function showCountryDetail() {
             </div>
         </div>`;
 }
-function showBorderCountry(calling){
+window.showBorderCountry = function (calling){
     window.location.href = `https://countries-one-alpha.vercel.app/detail.html?id=${calling}`
     // window.location.href = `http://127.0.0.1:5500/Websites/Countries/detail.html?id=${calling}`
     let country = data.find(item => item.callingCodes[0] == calling);

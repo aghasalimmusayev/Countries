@@ -1,3 +1,5 @@
+import { getData } from "./service.js";
+
 let regions = [];
 let countries = document.querySelector(".countries");
 let randomCountry = document.querySelector(".rand_country");
@@ -15,16 +17,12 @@ let darkMode = document.querySelector(".dark_mode");
 let themeLink = document.querySelector("#themeLink");
 let faBars = document.querySelector(".fa-bars");
 let moreBtn = document.querySelector(".more_btn");
-let currentFilteredRegion = null; // Bu yeni dəyişən əlavə olundu
+let currentFilteredRegion = null;
 let say = 12;
 
-let data;
-getFetchData();
-// getInlineData();
-
-async function getFetchData() {
-    const response = await fetch("https://raw.githubusercontent.com/TheOksigen/purfect_data/refs/heads/main/country.json");
-    data = await response.json();
+let data
+async function useData() {
+    data = await getData()
     showRegions();
     desctopLinksShow();
     mobileLinksShow();
@@ -57,36 +55,8 @@ async function getFetchData() {
         showCountries();
     }
 }
-function getInlineData() {
-    showRegions();
-    desctopLinksShow();
-    mobileLinksShow();
-    randomCountryShow();
-    filterRegion();
-    let currentTheme = localStorage.getItem("theme")
-    const urlParams = new URLSearchParams(window.location.search);
-    const selectedRegion = urlParams.get("region");
-    if (selectedRegion) {
-        let filterRegion = data.filter(element => element.region === selectedRegion);
-        showCountries(filterRegion);
-        let regionlar = document.querySelectorAll(".region_name");
-        regionlar.forEach(r => {
-            if (r.textContent === selectedRegion) {
-                r.style.color = "#8B5CF6";
-                r.style.borderBottom = "2px solid #8B5CF6";
-            }
-            else {
-                r.style.color = currentTheme === "dark" ? "white" : "black";
-                r.style.borderBottom = "2px solid #e7e6e6";
-            }
-        });
-        header.style.display = "none";
-        allCountries.style.border = "none";
-    }
-    else {
-        showCountries();
-    }
-}
+useData()
+
 let currentTheme = localStorage.getItem("theme")
 if(!currentTheme || currentTheme == "light"){
     themeLink.setAttribute("href", "style.css")
@@ -98,20 +68,20 @@ else if(currentTheme == "dark"){
     darkMode.style.display = "none"
     lightMode.style.display = "block"
 }
-function lightModeChange(){
+window.lightModeChange = function(){
     lightMode.style.display = "none"
     darkMode.style.display = "block"
     themeLink.setAttribute("href", "style.css")
     localStorage.setItem("theme", "light");
 }
-function darkModeChange(){
+window.darkModeChange = function(){
     darkMode.style.display = "none"
     lightMode.style.display = "block"
     themeLink.setAttribute("href", "dark.css")
     localStorage.setItem("theme", "dark");
 }
 searchBox.style.display = "none"
-function toggleSearch(){
+window.toggleSearch = function(){
     if(searchBox.style.display == "none") {
         searchBox.style.display = "initial";
         searchInput.focus();
@@ -123,7 +93,7 @@ function toggleSearch(){
     }
 }
 faXmark.style.display = "none"
-function searchCountry(){
+window.searchCountry = function(){
     faXmark.style.display = searchInput.value == "" ? "none" : "initial"
     data = data.filter(olke => olke.name !== "Armenia")
     let searchOlke = data.filter(element => 
@@ -131,13 +101,13 @@ function searchCountry(){
     );
     showCountries(searchOlke);
 }
-function clearInput(){
+window.clearInput = function (){
     searchInput.value = ""
     faXmark.style.display = "none"
     showCountries();
 }
 smLinks.style.maxHeight = "0px";
-function toggleLinks(){
+window.toggleLinks = function (){
     if (smLinks.style.maxHeight === "0px" || smLinks.style.maxHeight == "") {
         smLinks.style.maxHeight = smLinks.scrollHeight + "px";
     } 
@@ -228,14 +198,14 @@ function showCountries(olkeler = data){
     moreBtn.innerHTML = ""
     if(say < +olkeler.length) moreBtn.innerHTML = `<button class="show_more_btn" onclick="showMore()">Show More</button>`
 }
-function showMore(){
+window.showMore = function (){
     say = say + 12;
     showCountries();
 }
-function showDetail(calling){
+window.showDetail = function (calling){
     window.location.href = `https://countries-one-alpha.vercel.app/detail.html?id=${calling}`
 }
-// function showDetail(calling){
+// window.showDetail = function (calling){
 //     window.location.href = `http://127.0.0.1:5500/Websites/Countries/detail.html?id=${calling}`
 // }
 function filterRegion(){
