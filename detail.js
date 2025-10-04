@@ -21,7 +21,7 @@ async function useData() {
 useData();
 
 allCountries.onclick = function(){
-    window.location.href = `https://countries-one-alpha.vercel.app`
+    window.location.href = `https://countries-aga.vercel.app`
 }
 // allCountries.onclick = function(){
 //     window.location.href = `http://127.0.0.1:5500/Countries/index.html`
@@ -41,21 +41,21 @@ function desctopLinksShow() {
         .slice(0, 4)
         .forEach(element => {
             leftLinks.innerHTML +=
-            `<li><a class="region_name py-4 px-2" href="https://countries-one-alpha.vercel.app?region=${element}">${element}</a></li>`;
+            `<li><a class="region_name py-4 px-2" href="https://countries-aga.vercel.app?region=${element}">${element}</a></li>`;
             // `<li><a class="region_name py-4 px-2" href="http://127.0.0.1:5500/Countries/index.html?region=${element}">${element}</a></li>`;
         });
     regions
         .slice(4, 8)
         .forEach(element => {
             rightLinks.innerHTML +=
-            `<li><a class="region_name py-4 px-2" href="https://countries-one-alpha.vercel.app?region=${element}">${element}</a></li>`;
+            `<li><a class="region_name py-4 px-2" href="https://countries-aga.vercel.app?region=${element}">${element}</a></li>`;
             // `<li><a class="region_name py-4 px-2" href="http://127.0.0.1:5500/Countries/index.html?region=${element}">${element}</a></li>`;
         });
 }
 function mobileLinksShow() {
     regions.forEach(element => {
         smLinks.innerHTML +=
-        `<li class="py-3 border-bottom"><a class="region_name" href="https://countries-one-alpha.vercel.app?region=${element}">${element}</a></li>`;
+        `<li class="py-3 border-bottom"><a class="region_name" href="https://countries-aga.vercel.app?region=${element}">${element}</a></li>`;
         // `<li class="py-3 border-bottom"><a class="region_name" href="http://127.0.0.1:5500/Countries/index.html?region=${element}">${element}</a></li>`;
     });
 }
@@ -122,7 +122,7 @@ function showCountryDetail() {
         </div>`;
 }
 window.showBorderCountry = function (calling){
-    window.location.href = `https://countries-one-alpha.vercel.app/detail.html?id=${calling}`
+    window.location.href = `https://countries-aga.vercel.app/detail.html?id=${calling}`
     // window.location.href = `http://127.0.0.1:5500/Countries/detail.html?id=${calling}`
     let country = data.find(item => item.callingCodes[0] == calling);
     let serhedler = "";

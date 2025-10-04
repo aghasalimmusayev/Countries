@@ -203,7 +203,7 @@ window.showMore = function (){
     showCountries();
 }
 window.showDetail = function (calling){
-    window.location.href = `https://countries-one-alpha.vercel.app/detail.html?id=${calling}`
+    window.location.href = `https://https://countries-aga.vercel.app//detail.html?id=${calling}`
 }
 // window.showDetail = function (calling){
 //     window.location.href = `http://127.0.0.1:5500/Countries/detail.html?id=${calling}`
@@ -238,7 +238,7 @@ function filterRegion(){
 allCountries.onclick = function(){
     currentFilteredRegion = null; 
     say = 12; 
-    window.location.href = `https://countries-one-alpha.vercel.app`
+    window.location.href = `https://https://countries-aga.vercel.app/`
     // window.location.href = `http://127.0.0.1:5500/Countries/index.html`
     header.style.display = "block"
     let regionlar = document.querySelectorAll(".region_name");
