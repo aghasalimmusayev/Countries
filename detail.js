@@ -24,7 +24,7 @@ allCountries.onclick = function(){
     window.location.href = `https://countries-one-alpha.vercel.app`
 }
 // allCountries.onclick = function(){
-//     window.location.href = `http://127.0.0.1:5500/Websites/Countries/index.html`
+//     window.location.href = `http://127.0.0.1:5500/Countries/index.html`
 // }
 smLinks.style.maxHeight = "0px";
 window.toggleLinks = function (){
@@ -42,21 +42,21 @@ function desctopLinksShow() {
         .forEach(element => {
             leftLinks.innerHTML +=
             `<li><a class="region_name py-4 px-2" href="https://countries-one-alpha.vercel.app?region=${element}">${element}</a></li>`;
-            // `<li><a class="region_name py-4 px-2" href="http://127.0.0.1:5500/Websites/Countries/index.html?region=${element}">${element}</a></li>`;
+            // `<li><a class="region_name py-4 px-2" href="http://127.0.0.1:5500/Countries/index.html?region=${element}">${element}</a></li>`;
         });
     regions
         .slice(4, 8)
         .forEach(element => {
             rightLinks.innerHTML +=
             `<li><a class="region_name py-4 px-2" href="https://countries-one-alpha.vercel.app?region=${element}">${element}</a></li>`;
-            // `<li><a class="region_name py-4 px-2" href="http://127.0.0.1:5500/Websites/Countries/index.html?region=${element}">${element}</a></li>`;
+            // `<li><a class="region_name py-4 px-2" href="http://127.0.0.1:5500/Countries/index.html?region=${element}">${element}</a></li>`;
         });
 }
 function mobileLinksShow() {
     regions.forEach(element => {
         smLinks.innerHTML +=
         `<li class="py-3 border-bottom"><a class="region_name" href="https://countries-one-alpha.vercel.app?region=${element}">${element}</a></li>`;
-        // `<li class="py-3 border-bottom"><a class="region_name" href="http://127.0.0.1:5500/Websites/Countries/index.html?region=${element}">${element}</a></li>`;
+        // `<li class="py-3 border-bottom"><a class="region_name" href="http://127.0.0.1:5500/Countries/index.html?region=${element}">${element}</a></li>`;
     });
 }
 let currentTheme = localStorage.getItem("theme")
@@ -85,7 +85,7 @@ window.darkModeChange = function (){
 function showCountryDetail() {
     let params = new URLSearchParams(window.location.search);
     let id = params.get('id');
-    let country = data.find(item => item.callingCodes[0] == id);
+    let country = data.find(item => String(item.callingCodes[0]) === String(id));
     let serhedler = "";
     if (country.borders && country.borders.length > 0) {
         country.borders.forEach(border => {
@@ -123,7 +123,7 @@ function showCountryDetail() {
 }
 window.showBorderCountry = function (calling){
     window.location.href = `https://countries-one-alpha.vercel.app/detail.html?id=${calling}`
-    // window.location.href = `http://127.0.0.1:5500/Websites/Countries/detail.html?id=${calling}`
+    // window.location.href = `http://127.0.0.1:5500/Countries/detail.html?id=${calling}`
     let country = data.find(item => item.callingCodes[0] == calling);
     let serhedler = "";
     if (country.borders && country.borders.length > 0) {
