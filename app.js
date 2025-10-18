@@ -17,8 +17,31 @@ let darkMode = document.querySelector(".dark_mode");
 let themeLink = document.querySelector("#themeLink");
 let faBars = document.querySelector(".fa-bars");
 let moreBtn = document.querySelector(".more_btn");
+let currentTheme = localStorage.getItem("theme")
 let currentFilteredRegion = null;
 let say = 12;
+if (!currentTheme || currentTheme == "light") {
+    document.querySelector("body").classList.remove("dark")
+    lightMode.style.display = "none"
+    darkMode.style.display = "block"
+}
+else if (currentTheme == "dark") {
+    document.querySelector("body").classList.add("dark")
+    darkMode.style.display = "none"
+    lightMode.style.display = "block"
+}
+window.lightModeChange = function () {
+    lightMode.style.display = "none"
+    darkMode.style.display = "block"
+    document.querySelector("body").classList.remove("dark")
+    localStorage.setItem("theme", "light");
+}
+window.darkModeChange = function () {
+    darkMode.style.display = "none"
+    lightMode.style.display = "block"
+    document.querySelector("body").classList.add("dark")
+    localStorage.setItem("theme", "dark");
+}
 
 let data
 async function useData() {
@@ -57,91 +80,68 @@ async function useData() {
 }
 useData()
 
-let currentTheme = localStorage.getItem("theme")
-if(!currentTheme || currentTheme == "light"){
-    themeLink.setAttribute("href", "style.css")
-    lightMode.style.display = "none"
-    darkMode.style.display = "block"
-}
-else if(currentTheme == "dark"){
-    themeLink.setAttribute("href", "dark.css")
-    darkMode.style.display = "none"
-    lightMode.style.display = "block"
-}
-window.lightModeChange = function(){
-    lightMode.style.display = "none"
-    darkMode.style.display = "block"
-    themeLink.setAttribute("href", "style.css")
-    localStorage.setItem("theme", "light");
-}
-window.darkModeChange = function(){
-    darkMode.style.display = "none"
-    lightMode.style.display = "block"
-    themeLink.setAttribute("href", "dark.css")
-    localStorage.setItem("theme", "dark");
-}
 searchBox.style.display = "none"
-window.toggleSearch = function(){
-    if(searchBox.style.display == "none") {
+window.toggleSearch = function () {
+    if (searchBox.style.display == "none") {
         searchBox.style.display = "initial";
         searchInput.focus();
         randCountryBox.style.display = "none"
     }
-    else{
+    else {
         searchBox.style.display = "none"
         randCountryBox.style.display = "flex"
     }
 }
 faXmark.style.display = "none"
-window.searchCountry = function(){
+window.searchCountry = function () {
     faXmark.style.display = searchInput.value == "" ? "none" : "initial"
     data = data.filter(olke => olke.name !== "Armenia")
-    let searchOlke = data.filter(element => 
+    let searchOlke = data.filter(element =>
         element.name.toLowerCase().includes(searchInput.value.toLowerCase())
     );
     showCountries(searchOlke);
 }
-window.clearInput = function (){
+window.clearInput = function () {
     searchInput.value = ""
     faXmark.style.display = "none"
     showCountries();
 }
 smLinks.style.maxHeight = "0px";
-window.toggleLinks = function (){
+window.toggleLinks = function () {
     if (smLinks.style.maxHeight === "0px" || smLinks.style.maxHeight == "") {
         smLinks.style.maxHeight = smLinks.scrollHeight + "px";
-    } 
+    }
     else smLinks.style.maxHeight = "0px";
 }
-document.addEventListener("click", function(event) {
+document.addEventListener("click", function (event) {
     if (!smLinks.contains(event.target) && (!faBars.contains(event.target))) {
         smLinks.style.maxHeight = "0px";
     }
 });
-function showRegions(){
+function showRegions() {
     regions = [...new Set(data.map(element => element.region))];
 }
-function desctopLinksShow(){
+function desctopLinksShow() {
     regions
-    .slice(0, 4)
-    .forEach(element => {
-        leftLinks.innerHTML +=
-            `<li><a class="region_name py-4 px-2" href="">${element}</a></li>`
-    })
+        .slice(0, 4)
+        .forEach(element => {
+            leftLinks.innerHTML +=
+                `<li><a class="region_name py-4 px-2" href="">${element}</a></li>`
+        })
     regions
-    .slice(4, 8)
-    .forEach(element => {
-        rightLinks.innerHTML +=
-            `<li><a class="region_name py-4 px-2" href="">${element}</a></li>`
-    })
+        .slice(4, 8)
+        .forEach(element => {
+            rightLinks.innerHTML +=
+                `<li><a class="region_name py-4 px-2" href="">${element}</a></li>`
+        })
 }
-function mobileLinksShow(){
+function mobileLinksShow() {
     regions.forEach(element => {
         smLinks.innerHTML +=
-        `<li class="py-3 border-bottom"><a class="region_name" href="">${element}</a></li>`
+            `<li class="py-3 border-bottom"><a class="region_name" href="">${element}</a></li>`
     })
 }
-function randomCountryShow(){
+function randomCountryShow() {
     data = data.filter(olke => olke.name !== "Armenia")
     let randNum = Math.floor(Math.random() * data.length)
     randCountryBox.innerHTML =
@@ -167,17 +167,17 @@ function randomCountryShow(){
             </div>
         </div>`
 }
-function showCountries(olkeler = data){
+function showCountries(olkeler = data) {
     countries.innerHTML = ""
     if (currentFilteredRegion) {
         olkeler = data.filter(element => element.region === currentFilteredRegion);
     }
     olkeler = olkeler.filter(olke => olke.name !== "Armenia")
     olkeler
-    .slice(0, say)
-    .forEach(country => {
-        countries.innerHTML +=
-            `<div class="country d-flex flex-column" onclick="showDetail(${country.callingCodes[0]})">
+        .slice(0, say)
+        .forEach(country => {
+            countries.innerHTML +=
+                `<div class="country d-flex flex-column" onclick="showDetail(${country.callingCodes[0]})">
                 <div class="country_img">
                     <img src="${country.flag}" alt="country_flag">
                 </div>
@@ -194,25 +194,25 @@ function showCountries(olkeler = data){
                     </div>
                </div>
             </div>`
-    });
+        });
     moreBtn.innerHTML = ""
-    if(say < +olkeler.length) moreBtn.innerHTML = `<button class="show_more_btn" onclick="showMore()">Show More</button>`
+    if (say < +olkeler.length) moreBtn.innerHTML = `<button class="show_more_btn" onclick="showMore()">Show More</button>`
 }
-window.showMore = function (){
+window.showMore = function () {
     say = say + 12;
     showCountries();
 }
-window.showDetail = function (calling){
-    window.location.href = `https://countries-aga.vercel.app/detail.html?id=${calling}`
-}
-// window.showDetail = function (calling){
-//     window.location.href = `http://127.0.0.1:5500/Countries/detail.html?id=${calling}`
+// window.showDetail = function (calling) {
+//     window.location.href = `https://countries-aga.vercel.app/detail.html?id=${calling}`
 // }
-function filterRegion(){
+window.showDetail = function (calling){
+    window.location.href = `http://127.0.0.1:5500/detail.html?id=${calling}`
+}
+function filterRegion() {
     let currentTheme = localStorage.getItem("theme")
     let regionlar = document.querySelectorAll(".region_name");
     regionlar.forEach(regionSec => {
-        regionSec.addEventListener("click", function(e){
+        regionSec.addEventListener("click", function (e) {
             e.preventDefault();
             currentFilteredRegion = regionSec.textContent;
             say = 12; //  Sayı reset edin
@@ -231,15 +231,15 @@ function filterRegion(){
             window.scrollTo({
                 top: 0,
                 behavior: "smooth"
-            });    
+            });
         })
     })
 }
-allCountries.onclick = function(){
-    currentFilteredRegion = null; 
-    say = 12; 
-    window.location.href = `https://countries-aga.vercel.app`
-    // window.location.href = `http://127.0.0.1:5500/Countries/index.html`
+allCountries.onclick = function () {
+    currentFilteredRegion = null;
+    say = 12;
+    // window.location.href = `https://countries-aga.vercel.app`
+    window.location.href = `http://127.0.0.1:5500/index.html`
     header.style.display = "block"
     let regionlar = document.querySelectorAll(".region_name");
     regionlar.forEach(r => {

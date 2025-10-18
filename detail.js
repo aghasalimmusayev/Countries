@@ -9,6 +9,29 @@ let countryDetail = document.querySelector(".country_detail");
 let lightMode = document.querySelector(".light_mode");
 let darkMode = document.querySelector(".dark_mode");
 let themeLink = document.querySelector("#themeLink");
+let currentTheme = localStorage.getItem("theme")
+if (!currentTheme || currentTheme == "light") {
+    document.querySelector("body").classList.remove("dark")
+    lightMode.style.display = "none"
+    darkMode.style.display = "block"
+}
+else if (currentTheme == "dark") {
+    document.querySelector("body").classList.add("dark")
+    darkMode.style.display = "none"
+    lightMode.style.display = "block"
+}
+window.lightModeChange = function () {
+    lightMode.style.display = "none"
+    darkMode.style.display = "block"
+    document.querySelector("body").classList.remove("dark")
+    localStorage.setItem("theme", "light");
+}
+window.darkModeChange = function () {
+    darkMode.style.display = "none"
+    lightMode.style.display = "block"
+    document.querySelector("body").classList.add("dark")
+    localStorage.setItem("theme", "dark");
+}
 
 let data
 async function useData() {
@@ -20,20 +43,20 @@ async function useData() {
 }
 useData();
 
-allCountries.onclick = function(){
-    window.location.href = `https://countries-aga.vercel.app`
-}
-// allCountries.onclick = function(){
-//     window.location.href = `http://127.0.0.1:5500/Countries/index.html`
+// allCountries.onclick = function () {
+//     window.location.href = `https://countries-aga.vercel.app`
 // }
+allCountries.onclick = function () {
+    window.location.href = `http://127.0.0.1:5500/index.html`
+}
 smLinks.style.maxHeight = "0px";
-window.toggleLinks = function (){
+window.toggleLinks = function () {
     if (smLinks.style.maxHeight === "0px" || smLinks.style.maxHeight == "") {
         smLinks.style.maxHeight = smLinks.scrollHeight + "px";
-    } 
+    }
     else smLinks.style.maxHeight = "0px";
 }
-function showRegions(){
+function showRegions() {
     regions = [...new Set(data.map(element => element.region))];
 }
 function desctopLinksShow() {
@@ -41,46 +64,23 @@ function desctopLinksShow() {
         .slice(0, 4)
         .forEach(element => {
             leftLinks.innerHTML +=
-            `<li><a class="region_name py-4 px-2" href="https://countries-aga.vercel.app?region=${element}">${element}</a></li>`;
-            // `<li><a class="region_name py-4 px-2" href="http://127.0.0.1:5500/Countries/index.html?region=${element}">${element}</a></li>`;
+                // `<li><a class="region_name py-4 px-2" href="https://countries-aga.vercel.app?region=${element}">${element}</a></li>`;
+                `<li><a class="region_name py-4 px-2" href="http://127.0.0.1:5500/index.html?region=${element}">${element}</a></li>`;
         });
     regions
         .slice(4, 8)
         .forEach(element => {
             rightLinks.innerHTML +=
-            `<li><a class="region_name py-4 px-2" href="https://countries-aga.vercel.app?region=${element}">${element}</a></li>`;
-            // `<li><a class="region_name py-4 px-2" href="http://127.0.0.1:5500/Countries/index.html?region=${element}">${element}</a></li>`;
+                // `<li><a class="region_name py-4 px-2" href="https://countries-aga.vercel.app?region=${element}">${element}</a></li>`;
+                `<li><a class="region_name py-4 px-2" href="http://127.0.0.1:5500/index.html?region=${element}">${element}</a></li>`;
         });
 }
 function mobileLinksShow() {
     regions.forEach(element => {
         smLinks.innerHTML +=
-        `<li class="py-3 border-bottom"><a class="region_name" href="https://countries-aga.vercel.app?region=${element}">${element}</a></li>`;
-        // `<li class="py-3 border-bottom"><a class="region_name" href="http://127.0.0.1:5500/Countries/index.html?region=${element}">${element}</a></li>`;
+            // `<li class="py-3 border-bottom"><a class="region_name" href="https://countries-aga.vercel.app?region=${element}">${element}</a></li>`;
+            `<li class="py-3 border-bottom"><a class="region_name" href="http://127.0.0.1:5500/index.html?region=${element}">${element}</a></li>`;
     });
-}
-let currentTheme = localStorage.getItem("theme")
-if(!currentTheme || currentTheme == "light"){
-    themeLink.setAttribute("href", "style.css")
-    lightMode.style.display = "none"
-    darkMode.style.display = "block"
-}
-else if(currentTheme == "dark"){
-    themeLink.setAttribute("href", "dark.css")
-    darkMode.style.display = "none"
-    lightMode.style.display = "block"
-}
-window.lightModeChange = function (){
-    lightMode.style.display = "none"
-    darkMode.style.display = "block"
-    themeLink.setAttribute("href", "style.css")
-    localStorage.setItem("theme", "light");
-}
-window.darkModeChange = function (){
-    darkMode.style.display = "none"
-    lightMode.style.display = "block"
-    themeLink.setAttribute("href", "dark.css")
-    localStorage.setItem("theme", "dark");
 }
 function showCountryDetail() {
     let params = new URLSearchParams(window.location.search);
@@ -90,8 +90,8 @@ function showCountryDetail() {
     if (country.borders && country.borders.length > 0) {
         country.borders.forEach(border => {
             let borderCountry = data.find(item => item.alpha3Code == border)
-            if(borderCountry.name !== "Armenia"){
-            serhedler += `<span class="border_name text-white mx-1" 
+            if (borderCountry.name !== "Armenia") {
+                serhedler += `<span class="border_name text-white mx-1" 
                 onclick="showBorderCountry('${borderCountry.callingCodes[0]}')">${border}</span>`;
             }
         });
@@ -121,15 +121,15 @@ function showCountryDetail() {
             </div>
         </div>`;
 }
-window.showBorderCountry = function (calling){
-    window.location.href = `https://countries-aga.vercel.app/detail.html?id=${calling}`
-    // window.location.href = `http://127.0.0.1:5500/Countries/detail.html?id=${calling}`
+window.showBorderCountry = function (calling) {
+    // window.location.href = `https://countries-aga.vercel.app/detail.html?id=${calling}`
+    window.location.href = `http://127.0.0.1:5500/detail.html?id=${calling}`
     let country = data.find(item => item.callingCodes[0] == calling);
     let serhedler = "";
     if (country.borders && country.borders.length > 0) {
         country.borders.forEach(border => {
             let borderCountry = data.find(item => item.alpha3Code == border)
-            if(borderCountry.name !== "Armenia"){
+            if (borderCountry.name !== "Armenia") {
                 serhedler += `<span class="border_name text-white mx-1" 
                 onclick="showBorderCountry('${borderCountry.callingCodes[0]}')">${border}</span>`;
             }
