@@ -8,7 +8,6 @@ let allCountries = document.querySelector(".fa-earth-americas");
 let countryDetail = document.querySelector(".country_detail");
 let lightMode = document.querySelector(".light_mode");
 let darkMode = document.querySelector(".dark_mode");
-let themeLink = document.querySelector("#themeLink");
 let currentTheme = localStorage.getItem("theme")
 if (!currentTheme || currentTheme == "light") {
     document.querySelector("body").classList.remove("dark")
@@ -32,6 +31,7 @@ window.darkModeChange = function () {
     document.querySelector("body").classList.add("dark")
     localStorage.setItem("theme", "dark");
 }
+const BASE_URL = window.location.origin
 
 let data
 async function useData() {
@@ -43,11 +43,8 @@ async function useData() {
 }
 useData();
 
-// allCountries.onclick = function () {
-//     window.location.href = `https://countries-aga.vercel.app`
-// }
 allCountries.onclick = function () {
-    window.location.href = `http://127.0.0.1:5500/index.html`
+    window.location.href = `${BASE_URL}/index.html`
 }
 smLinks.style.maxHeight = "0px";
 window.toggleLinks = function () {
@@ -60,26 +57,26 @@ function showRegions() {
     regions = [...new Set(data.map(element => element.region))];
 }
 function desctopLinksShow() {
+    leftLinks.innerHTML = ''
     regions
         .slice(0, 4)
         .forEach(element => {
             leftLinks.innerHTML +=
-                // `<li><a class="region_name py-4 px-2" href="https://countries-aga.vercel.app?region=${element}">${element}</a></li>`;
-                `<li><a class="region_name py-4 px-2" href="http://127.0.0.1:5500/index.html?region=${element}">${element}</a></li>`;
+                `<li><a class="region_name py-4 px-2" href="${BASE_URL}/index.html?region=${element}">${element}</a></li>`;
         });
+    rightLinks.innerHTML = ''
     regions
         .slice(4, 8)
         .forEach(element => {
             rightLinks.innerHTML +=
-                // `<li><a class="region_name py-4 px-2" href="https://countries-aga.vercel.app?region=${element}">${element}</a></li>`;
-                `<li><a class="region_name py-4 px-2" href="http://127.0.0.1:5500/index.html?region=${element}">${element}</a></li>`;
+                `<li><a class="region_name py-4 px-2" href="${BASE_URL}/index.html?region=${element}">${element}</a></li>`;
         });
 }
 function mobileLinksShow() {
+    smLinks.innerHTML = ''
     regions.forEach(element => {
         smLinks.innerHTML +=
-            // `<li class="py-3 border-bottom"><a class="region_name" href="https://countries-aga.vercel.app?region=${element}">${element}</a></li>`;
-            `<li class="py-3 border-bottom"><a class="region_name" href="http://127.0.0.1:5500/index.html?region=${element}">${element}</a></li>`;
+            `<li class="py-3 border-bottom"><a class="region_name" href="${BASE_URL}/index.html?region=${element}">${element}</a></li>`;
     });
 }
 function showCountryDetail() {
@@ -122,8 +119,7 @@ function showCountryDetail() {
         </div>`;
 }
 window.showBorderCountry = function (calling) {
-    // window.location.href = `https://countries-aga.vercel.app/detail.html?id=${calling}`
-    window.location.href = `http://127.0.0.1:5500/detail.html?id=${calling}`
+    window.location.href = `${BASE_URL}/detail.html?id=${calling}`
     let country = data.find(item => item.callingCodes[0] == calling);
     let serhedler = "";
     if (country.borders && country.borders.length > 0) {
@@ -159,5 +155,3 @@ window.showBorderCountry = function (calling) {
             </div>
         </div>`;
 }
-
-// country.altSpellings bu hisse duzelmelidi

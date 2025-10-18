@@ -20,6 +20,7 @@ let moreBtn = document.querySelector(".more_btn");
 let currentTheme = localStorage.getItem("theme")
 let currentFilteredRegion = null;
 let say = 12;
+const BASE_URL = window.location.origin
 if (!currentTheme || currentTheme == "light") {
     document.querySelector("body").classList.remove("dark")
     lightMode.style.display = "none"
@@ -202,11 +203,8 @@ window.showMore = function () {
     say = say + 12;
     showCountries();
 }
-// window.showDetail = function (calling) {
-//     window.location.href = `https://countries-aga.vercel.app/detail.html?id=${calling}`
-// }
 window.showDetail = function (calling){
-    window.location.href = `http://127.0.0.1:5500/detail.html?id=${calling}`
+    window.location.href = `${BASE_URL}/detail.html?id=${calling}`
 }
 function filterRegion() {
     let currentTheme = localStorage.getItem("theme")
@@ -238,8 +236,7 @@ function filterRegion() {
 allCountries.onclick = function () {
     currentFilteredRegion = null;
     say = 12;
-    // window.location.href = `https://countries-aga.vercel.app`
-    window.location.href = `http://127.0.0.1:5500/index.html`
+    window.location.href = `${BASE_URL}/index.html`
     header.style.display = "block"
     let regionlar = document.querySelectorAll(".region_name");
     regionlar.forEach(r => {
