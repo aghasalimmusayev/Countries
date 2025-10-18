@@ -71,12 +71,14 @@
             <div class="footer_content py-4 d-flex align-items-center justify-content-between">
                 <div class="d-flex align-items-center">
                     <img class="me-3" src="img/1740752875515.png" alt="logo">
-                    <p>by Agasalim Privacy © 2025</p>
+                    <p class="copyRight">by Agasalim Privacy © <span></span></p>
                 </div>
                 <div class="social d-flex align-items-center">
-                    <i class="fa-brands fa-instagram p-2"></i>
-                    <i class="fa-brands fa-twitter p-2"></i>
-                    <i class="fa-brands fa-facebook p-2"></i>
+                    <a href="tel:+994773997811"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="mailto:aga77ams@gmail.com"><i class="fa-solid fa-envelope"></i></a>
+                    <a href="https://github.com/aghasalimmusayev/Countries" target="_blank">
+                        <i class="fa-brands fa-github"></i>
+                    </a>
                 </div>
             </div>
         </div>
@@ -84,6 +86,7 @@
 
 
     <script type="module" src="app.js"></script>
+    <script>document.querySelector(".copyRight span").innerHTML = new Date().getFullYear()</script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>

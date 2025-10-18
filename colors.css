@@ -13,6 +13,7 @@
     --color2: #8B5CF6;
     --color3: #0707a0;
     --color4: #0f1111;
+    --color5: #fff;
     --border_color: #8B5CF6;
     --border_color2: #E5E7EB;
     --border_color3: #000;
@@ -38,6 +39,7 @@ body.dark {
     --color: #fff;
     --color2: #8B5CF6;
     --color3: #0707a0;
+    --color5: #000;
     --border_color: #8B5CF6;
     --border_color3: #fff;
     --border_color4: #d5d9d9;
